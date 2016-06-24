@@ -18,5 +18,6 @@
                 <li>Temperature : {{ donnees.temperature }} °C</li>
             </ul>
             <h3>{{ donnees.description|capitalize }}</h3>
+            <center><a href="{{ path('meteo_homepage') }}"><input type="button" value="Retour"></a></center>
         </div>
 {% endblock body %}

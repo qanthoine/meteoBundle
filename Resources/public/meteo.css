@@ -14,3 +14,23 @@
 {
     font-size: 30px;
 }
+.listeville
+{
+    border: solid black 1px;
+    max-width: 25%;
+}
+.input
+{
+    text-align: center;
+    border: solid red 1px;
+    max-width: 50%;
+    margin-left: 25%;
+}
+.gps
+{
+    border: solid black 1px;
+    margin-left: 75%;
+    max-width: 25%;
+    text-align: center;
+    padding-bottom: 20px;
+}

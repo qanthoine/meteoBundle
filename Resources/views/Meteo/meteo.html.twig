@@ -1,5 +1,8 @@
+{% extends "MeteoBundle::layout.html.twig" %}
+{% block body %}
+<h1>Recherche par :</h1>
 <div class="listeville">
-    <h1>Liste des Villes</h1>
+    <h2>Liste de villes :</h2>
     <ul>
         <li><a href="{{ path('meteo_render_id', {'id' : 2968815}) }}">Paris</a></li>
         <li><a href="{{ path('meteo_render_id', {'id' : 2643743}) }}">Londre</a></li>
@@ -13,11 +16,13 @@
     </ul>
 </div>
 <div class="input">
+    <h2>Saisi de la ville :</h2>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 </div>
 <div class="gps">
+    <h2>Coordonnées GPS :</h2>
     <button data-url="{{ path('meteo_render_gps', {'latitude' : "1", 'longitude' : "2" }) }}" onClick="gps(this.getAttribute('data-url'));" >Utiliser ma Localisation</button>
     <script type="text/javascript">
     function gps(link){
@@ -43,3 +48,4 @@
     }
 </script>
 </div>
+    {% endblock body %}
