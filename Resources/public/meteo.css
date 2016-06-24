@@ -1,0 +1,16 @@
+.render
+{
+    border: 5px black solid;
+    float: left;
+    max-width: 25%;
+    background-color: white;
+}
+.render h1, h2, h3
+{
+    text-align: center;
+    font-size: 50px;
+}
+.render li
+{
+    font-size: 30px;
+}

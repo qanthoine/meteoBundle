@@ -1,0 +1,45 @@
+<div class="listeville">
+    <h1>Liste des Villes</h1>
+    <ul>
+        <li><a href="{{ path('meteo_render_id', {'id' : 2968815}) }}">Paris</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 2643743}) }}">Londre</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 5128638}) }}">New York</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 7285902}) }}">Genève</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 2950158}) }}">Berlin</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 6359304}) }}">Madrid</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 5344157}) }}">Dublin</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 2759794}) }}">Amsterdam</a></li>
+        <li><a href="{{ path('meteo_render_id', {'id' : 2996814}) }}">Magland</a></li>
+    </ul>
+</div>
+<div class="input">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
+<div class="gps">
+    <button data-url="{{ path('meteo_render_gps', {'latitude' : "1", 'longitude' : "2" }) }}" onClick="gps(this.getAttribute('data-url'));" >Utiliser ma Localisation</button>
+    <script type="text/javascript">
+    function gps(link){
+        if (navigator.geolocation) //tu vérifies la disponibilité de la géo
+        {
+            navigator.geolocation.getCurrentPosition( //tu lances la géo qui va vérifier si l'utilisateur est d'accord
+                    function(position) //l'utilisateur est ok, donc cette fonction est exécutée, son premier paramètre est un objet position
+                    {
+                        var latitude = position.coords.latitude; //tu récupère la latitude
+                        var longitude = position.coords.longitude; //tu récupère la longitude
+                        //tu récupère la valeur de ton lien
+                        //tu modifie ton lien
+                        link = link.replace(1,latitude);
+                        link = link.replace(2,longitude);
+                        //ci dessous, tu demande au navigateur de modifier sa source avec
+                        window.location.replace(link);
+                    }
+            );
+        }
+        else{
+            alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+        }
+    }
+</script>
+</div>
