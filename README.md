@@ -12,6 +12,8 @@ Un cache permet de ne pas surcharger l'API.
 <li>Inscrivez-vous sur le site d'<a href="http://openweathermap.org/">Openweathermap</a></li>
 <li>Récuperer votre ApiKey <a href="https://home.openweathermap.org/api_keys">ici</a></li>
 <li>Installer le bundle dans votre dossier vendor de votre projet</li>
+<li>Ajouter le bundle dans le kernel (app/AppKernel.php)
+<pre><code>new MeteoBundle\MeteoBundle()</code></pre>
 <li>Entrez les commandes ci-dessous (Installation du CSS et des bases de données) :
 <pre><code>php bin/console asset:install --symlink</code></pre>
 <pre><code>php bin/console doctrine:schema:update --force</code></pre></li>
