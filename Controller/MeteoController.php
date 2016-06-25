@@ -15,6 +15,7 @@ class MeteoController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $apiId = "VOTRE_APIKEYS";
         $em = $this->getDoctrine()->getManager();
         $form = $this->createFormBuilder()
             ->add('ville', TextType::class)
@@ -37,7 +38,7 @@ class MeteoController extends Controller
             else
             {
                 $sauvegarde = New MeteoInput();
-                $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q='.$villeClean.'&appid=d4bf3c3151421efaa9c3e18d97fd8dab&units=metric&lang=fr');
+                $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q='.$villeClean.'&appid='.$apiId.'&units=metric&lang=fr');
                 $data = json_decode($json,true);
                 $retour = array('nom' => $data['name'], 'humidite' => $data['main']['humidity'], 'type' => $data['weather'][0]['main'], 'temperature' => $data['main']['temp'], 'description' => $data['weather'][0]['description']);
                 $sauvegarde->setData($json);
@@ -51,6 +52,7 @@ class MeteoController extends Controller
     }
     public function renderidAction($id)
     {
+        $apiId = "VOTRE_APIKEYS";
         $em = $this->getDoctrine()->getManager();
         $verif = $em->getRepository('MeteoBundle:MeteoVille')->findcountryid($id);
         if (!empty($verif))
@@ -63,7 +65,7 @@ class MeteoController extends Controller
         else
         {
             $sauvegarde = New MeteoVille();
-            $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id='.$id.'&appid=d4bf3c3151421efaa9c3e18d97fd8dab&units=metric&lang=fr');
+            $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id='.$id.'&appid='.$apiId.'&units=metric&lang=fr');
             $data = json_decode($json,true);
             $retour = array('nom' => $data['name'], 'humidite' => $data['main']['humidity'], 'type' => $data['weather'][0]['main'], 'temperature' => $data['main']['temp'], 'description' => $data['weather'][0]['description']);
             $sauvegarde->setData($json);
@@ -75,6 +77,7 @@ class MeteoController extends Controller
     }
     public function rendergpsAction($latitude, $longitude)
     {
+        $apiId = "VOTRE_APIKEYS";
         $em = $this->getDoctrine()->getManager();
         $latitude_clean = floatval($latitude);
         $longitude_clean = floatval($longitude);
@@ -89,7 +92,7 @@ class MeteoController extends Controller
         else
         {
             $sauvegarde = New MeteoGPS();
-            $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat=' . $latitude . '&lon=' . $longitude . '&appid=d4bf3c3151421efaa9c3e18d97fd8dab&units=metric&lang=fr');
+            $json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat='.$latitude.'&lon='.$longitude.'&appid='.$apiId.'&units=metric&lang=fr');
             $data = json_decode($json, true);
             $retour = array('nom' => $data['name'], 'humidite' => $data['main']['humidity'], 'type' => $data['weather'][0]['main'], 'temperature' => $data['main']['temp'], 'description' => $data['weather'][0]['description']);
             $sauvegarde->setData($json);
