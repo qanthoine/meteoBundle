@@ -1,7 +1,7 @@
 # MeteoBundle
 Projet Parcours Symfony
 #Présentation :
-Bundle permettant à l'utilisateur de connaître la temperature actuelle via 3 methodes grâce à l'API d'<a href="http://openweathermap.org/">Openweathermap</a> :
+Bundle permettant à l'utilisateur de connaître la meteo actuelle via 3 methodes grâce à l'API d'<a href="http://openweathermap.org/">Openweathermap</a> :
 <ul>
 <li>Via une liste de villes pré-enregistrées</li>
 <li>Via la saisie du nom de la ville</li>
