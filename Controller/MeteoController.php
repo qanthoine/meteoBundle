@@ -77,9 +77,8 @@ class MeteoController extends Controller
             $retour[3] = array('humidite' => $data['list'][24]['main']['humidity'], 'type' => $data['list'][24]['weather'][0]['main'], 'temperature' => $data['list'][24]['main']['temp'], 'description' => $data['list'][24]['weather'][0]['description']);
             $retour[4] = array('humidite' => $data['list'][32]['main']['humidity'], 'type' => $data['list'][32]['weather'][0]['main'], 'temperature' => $data['list'][32]['main']['temp'], 'description' => $data['list'][32]['weather'][0]['description']);
             //$retour[5] = array('humidite' => $data['list'][38]['main']['humidity'], 'type' => $data['list'][38]['weather'][0]['main'], 'temperature' => $data['list'][38]['main']['temp'], 'description' => $data['list'][38]['weather'][0]['description']);
-            $donnees = json_encode($retour);
-            var_dump($donnees);
-            return $this->render('MeteoBundle:Meteo:render.html.twig', array('info' => $info, 'donnees' => $donnees));
+            $donnees_json = json_encode($retour);
+            return $this->render('MeteoBundle:Meteo:render.html.twig', array('info' => $info, 'donnees' => $retour, 'donnees_j' => $donnees_json));
         }
     }
     public function rendergpsAction($latitude, $longitude)
