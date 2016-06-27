@@ -70,12 +70,11 @@ class MeteoController extends Controller
             $json_new = file_get_contents('http://api.openweathermap.org/data/2.5/forecast?id='.$id.'&appid='.$apiId.'&units='.$units.'&lang='.$langs.'');
             $data = json_decode($json_new, true);
             $info = $data['city']['name'];
-            var_dump($json_new);
-            $retour[0] = array('humidite' => $data['list'][0]['main']['humidity'], 'type' => $data['list'][0]['weather'][0]['main'], 'temperature' => $data['list'][0]['main']['temp'], 'description' => $data['list'][0]['weather'][0]['description']);
-            $retour[1] = array('humidite' => $data['list'][8]['main']['humidity'], 'type' => $data['list'][8]['weather'][0]['main'], 'temperature' => $data['list'][8]['main']['temp'], 'description' => $data['list'][8]['weather'][0]['description']);
-            $retour[2] = array('humidite' => $data['list'][16]['main']['humidity'], 'type' => $data['list'][16]['weather'][0]['main'], 'temperature' => $data['list'][16]['main']['temp'], 'description' => $data['list'][16]['weather'][0]['description']);
-            $retour[3] = array('humidite' => $data['list'][24]['main']['humidity'], 'type' => $data['list'][24]['weather'][0]['main'], 'temperature' => $data['list'][24]['main']['temp'], 'description' => $data['list'][24]['weather'][0]['description']);
-            $retour[4] = array('humidite' => $data['list'][32]['main']['humidity'], 'type' => $data['list'][32]['weather'][0]['main'], 'temperature' => $data['list'][32]['main']['temp'], 'description' => $data['list'][32]['weather'][0]['description']);
+            $retour[0] = array('humidite' => $data['list'][0]['main']['humidity'], 'type' => $data['list'][0]['weather'][0]['main'], 'temperature' => $data['list'][0]['main']['temp'], 'description' => $data['list'][0]['weather'][0]['description'], 'date' => $data['list'][0]['dt_txt']);
+            $retour[1] = array('humidite' => $data['list'][8]['main']['humidity'], 'type' => $data['list'][8]['weather'][0]['main'], 'temperature' => $data['list'][8]['main']['temp'], 'description' => $data['list'][8]['weather'][0]['description'], 'date' => $data['list'][8]['dt_txt']);
+            $retour[2] = array('humidite' => $data['list'][16]['main']['humidity'], 'type' => $data['list'][16]['weather'][0]['main'], 'temperature' => $data['list'][16]['main']['temp'], 'description' => $data['list'][16]['weather'][0]['description'], 'date' => $data['list'][16]['dt_txt']);
+            $retour[3] = array('humidite' => $data['list'][24]['main']['humidity'], 'type' => $data['list'][24]['weather'][0]['main'], 'temperature' => $data['list'][24]['main']['temp'], 'description' => $data['list'][24]['weather'][0]['description'], 'date' => $data['list'][24]['dt_txt']);
+            $retour[4] = array('humidite' => $data['list'][32]['main']['humidity'], 'type' => $data['list'][32]['weather'][0]['main'], 'temperature' => $data['list'][32]['main']['temp'], 'description' => $data['list'][32]['weather'][0]['description'], 'date' => $data['list'][32]['dt_txt']);
             //$retour[5] = array('humidite' => $data['list'][38]['main']['humidity'], 'type' => $data['list'][38]['weather'][0]['main'], 'temperature' => $data['list'][38]['main']['temp'], 'description' => $data['list'][38]['weather'][0]['description']);
             $donnees_json = json_encode($retour);
             return $this->render('MeteoBundle:Meteo:render.html.twig', array('info' => $info, 'donnees' => $retour, 'donnees_j' => $donnees_json));

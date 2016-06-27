@@ -4,6 +4,7 @@
     float: left;
     max-width: 25%;
     background-color: white;
+    display: inline;
 }
 .render h1, h2, h3
 {
@@ -33,4 +34,13 @@
     max-width: 25%;
     text-align: center;
     padding-bottom: 20px;
+}
+#description
+{
+    text-transform: capitalize;
+}
+#background
+{
+    margin-left: 30%;
+    max-width: 70%;
 }
