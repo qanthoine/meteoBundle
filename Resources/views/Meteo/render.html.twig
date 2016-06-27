@@ -11,7 +11,7 @@
 {% endblock styles %}
 {% block body %}
         <div class="render">
-            <h1>Météo à {{ donnees.nom }}</h1>
+            <h1>Météo à {{ info }}</h1>
             <h2>Données</h2>
             <ul>
                 <li>Humidité : {{ donnees.humidite }} %</li>
@@ -20,4 +20,21 @@
             <h3>{{ donnees.description|capitalize }}</h3>
             <center><a href="{{ path('meteo_homepage') }}"><input type="button" value="Retour"></a></center>
         </div>
+    <input type="range" id="weather-range" min="0" max="5" value="0" step="1" />`
+
+
 {% endblock body %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    var donnees = {{ donnees }}
+    /**
+     * Calls «updateWeatherData» when slider is moved
+     */
+    $('#weather-range').on("change mousemove", function() {
+        if((typeof donnees[$(this).val()] != 'undefined')) {
+            updateWeatherData(donnees[$(this).val()]);
+        }
+    });
+</script>
+{% endblock js %}
