@@ -10,12 +10,12 @@
             </ul>
             <h3 id="description">{{ donnees[0].description|capitalize }}</h3>
             <center>Prévisions :<br>
-            <input type="range" id="weather-range" min="0" max="4" value="0" step="1" />`<br>
-                <p id="datetime">Météo pour le : {{ donnees[0].date|date("d/m/Y à H:i:s") }}</p>
+            <input type="range" id="weather-range" min="0" max="5" value="0" step="1" />`<br>
+                <p id="datetime">Météo pour le : {{ donnees[0].date }}</p>
             <a href="{{ path('meteo_homepage') }}"><input type="button" value="Retour"></a><br></center>
         </div>
     <div id="background">
-        <img id="background" src="http://web-svenning.fr/images/{{ donnees[0].type }}.png" alt="{{ donnees[0].type }}">
+        <img src="http://web-svenning.fr/images/{{ donnees[0].type }}.png" alt="{{ donnees[0].type }}">
     </div>
 {% endblock body %}
 {% block js %}
@@ -32,12 +32,36 @@
     });
     function updateWeatherData(donnees)
     {
-        $('#temperature').html('Temperature : '+donnees.temperature+ '°C');
-        $('#humidite').html('Humidité : '+donnees.humidite+ '%');
+        if(donnees.temperature === "Indisponible")
+        {
+            $('#temperature').html('Temperature '+donnees.temperature);
+        }
+        else{
+            $('#temperature').html('Temperature : '+donnees.temperature+ '°C');
+        }
+        if(donnees.humidite === "Indisponible")
+        {
+            $('#humidite').html('Humidité '+donnees.humidite);
+        }
+        else{
+            $('#humidite').html('Humidité : '+donnees.humidite+ '%');
+        }
         $('#description').html(donnees.description);
         $('#background').html('<img src="http://web-svenning.fr/images/'+donnees.type+'.png" alt="'+donnees.type+'">');
-        var currentDate = new Date(donnees.date);
-        $('#datetime').html('Meteo pour le : '+currentDate.toLocaleDateString()+' à '+currentDate.toLocaleTimeString());
+        if(typeof donnees.date === 'string')
+        {
+            if(donnees.date === "Indisponible")
+            {
+                $('#datetime').html('La prévision est indisponible');
+            }
+            else {
+                $('#datetime').html('Meteo pour le : '+donnees.date);
+            }
+        }
+        else{
+            var currentDate = new Date(donnees.date);
+            $('#datetime').html('Meteo pour le : '+currentDate.toLocaleDateString()+' à '+currentDate.toLocaleTimeString());
+        }
     }
 </script>
 {% endblock js %}

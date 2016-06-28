@@ -36,10 +36,10 @@ class MeteoRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('m');
 
         $qb->where('m.input = :input')
-            ->andwhere('m.time > :time')
+            ->andwhere('m.date > :time')
             ->setParameter('input', $ville)
             ->setParameter('time', $time)
-            ->orderBy('m.time', 'DESC')
+            ->orderBy('m.date', 'DESC')
             ->setMaxResults('1')
         ;
 
@@ -58,7 +58,7 @@ class MeteoRepository extends \Doctrine\ORM\EntityRepository
         $maxLongitude = $longitude_clean +0.01;
         $qb = $this->createQueryBuilder('m');
 
-        $qb->where('m.time > :time')
+        $qb->where('m.date > :time')
             ->andwhere('m.longitude > :min_longitude')
             ->andwhere('m.longitude < :max_longitude')
             ->andwhere('m.latitude > :min_latitude')
@@ -68,7 +68,7 @@ class MeteoRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('max_latitude', $maxLatitude)
             ->setParameter('min_longitude', $minLongitude)
             ->setParameter('max_longitude', $maxLongitude)
-            ->orderBy('m.time', 'DESC')
+            ->orderBy('m.date', 'DESC')
             ->setMaxResults('1')
         ;
 

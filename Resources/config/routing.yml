@@ -6,9 +6,6 @@ meteo_render_id:
     defaults: { _controller: MeteoBundle:Meteo:renderid }
     requirements:
         id:  \d+
-meteo_render_ville:
-    path:     /meteo/render/{ville}
-    defaults: { _controller: MeteoBundle:Meteo:renderville }
 meteo_render_gps:
     path:     /meteo/render/{latitude}/{longitude}
     defaults: { _controller: MeteoBundle:Meteo:rendergps }

@@ -59,37 +59,9 @@ class Meteo
     /**
      * @var string
      *
-     * @ORM\Column(name="data_un", type="text")
+     * @ORM\Column(name="prevision", type="text")
      */
-    private $dataUn;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="data_deux", type="text")
-     */
-    private $dataDeux;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="data_trois", type="text")
-     */
-    private $dataTrois;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="data_quatre", type="text")
-     */
-    private $dataQuatre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="data_cinq", type="text")
-     */
-    private $dataCinq;
+    private $prevision;
 
     /**
      * @var \DateTime
@@ -98,6 +70,10 @@ class Meteo
      */
     private $date;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * Get id
@@ -230,123 +206,27 @@ class Meteo
     }
 
     /**
-     * Set dataUn
+     * Set prevision
      *
-     * @param string $dataUn
+     * @param string $prevision
      *
      * @return meteo
      */
-    public function setDataUn($dataUn)
+    public function setPrevision($prevision)
     {
-        $this->dataUn = $dataUn;
+        $this->prevision = $prevision;
 
         return $this;
     }
 
     /**
-     * Get dataUn
+     * Get prevision
      *
      * @return string
      */
-    public function getDataUn()
+    public function getPrevision()
     {
-        return $this->dataUn;
-    }
-
-    /**
-     * Set dataDeux
-     *
-     * @param string $dataDeux
-     *
-     * @return meteo
-     */
-    public function setDataDeux($dataDeux)
-    {
-        $this->dataDeux = $dataDeux;
-
-        return $this;
-    }
-
-    /**
-     * Get dataDeux
-     *
-     * @return string
-     */
-    public function getDataDeux()
-    {
-        return $this->dataDeux;
-    }
-
-    /**
-     * Set dataTrois
-     *
-     * @param string $dataTrois
-     *
-     * @return meteo
-     */
-    public function setDataTrois($dataTrois)
-    {
-        $this->dataTrois = $dataTrois;
-
-        return $this;
-    }
-
-    /**
-     * Get dataTrois
-     *
-     * @return string
-     */
-    public function getDataTrois()
-    {
-        return $this->dataTrois;
-    }
-
-    /**
-     * Set dataQuatre
-     *
-     * @param string $dataQuatre
-     *
-     * @return meteo
-     */
-    public function setDataQuatre($dataQuatre)
-    {
-        $this->dataQuatre = $dataQuatre;
-
-        return $this;
-    }
-
-    /**
-     * Get dataQuatre
-     *
-     * @return string
-     */
-    public function getDataQuatre()
-    {
-        return $this->dataQuatre;
-    }
-
-    /**
-     * Set dataCinq
-     *
-     * @param string $dataCinq
-     *
-     * @return meteo
-     */
-    public function setDataCinq($dataCinq)
-    {
-        $this->dataCinq = $dataCinq;
-
-        return $this;
-    }
-
-    /**
-     * Get dataCinq
-     *
-     * @return string
-     */
-    public function getDataCinq()
-    {
-        return $this->dataCinq;
+        return $this->prevision;
     }
 
     /**
