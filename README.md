@@ -17,10 +17,16 @@ Transition des prévisions par "slider range" en JavaScript<br>
 <li>Installer le bundle dans votre dossier vendor de votre projet</li>
 <li>Ajouter la ligne ci-dessous dans le ficher app/AppKernel.php</li>
 <pre><code>new MeteoBundle\MeteoBundle(),</code></pre>
-<li>Ajouter la ligne ci-dessous dans le ficher app/config/routing.yml</li>
+<li>Ajouter les lignes ci-dessous dans le ficher app/config/routing.yml</li>
 <pre><code>meteo:
                resource: "@MeteoBundle/Resources/config/routing.yml"
                prefix:   /</code></pre>
+<li>Ajouter les lignes ci-dessous en éditant avec vos données dans le ficher app/config/parameters.yml</li>
+<pre><code>
+    api_keys: 000000000000000000  # Votre ApiKeys
+    units: metric # Unités de mesure (imperial pour Fahrenheit ou metric pour Celsius)
+    langs: fr # Autre : en pour English, ru pour Russe, it pour Italien, ...)
+    </code></pre>
 <li>Entrez les commandes ci-dessous (Installation du CSS et des bases de données) :
 <pre><code>php bin/console asset:install --symlink</code></pre>
 <pre><code>php bin/console doctrine:schema:update --force</code></pre></li>
