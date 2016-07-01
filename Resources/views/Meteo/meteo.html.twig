@@ -23,7 +23,7 @@
 </div>
 <div class="gps">
     <h2>Coordonnées GPS :</h2>
-    <button data-url="{{ path('meteo_render_gps', {'latitude' : "1", 'longitude' : "2" }) }}" onClick="gps(this.getAttribute('data-url'));" >Utiliser ma Localisation</button>
+    <button data-url="{{ path('meteo_render_gps', {'latitude' : "latitude", 'longitude' : "longitude" }) }}" onClick="gps(this.getAttribute('data-url'));" >Utiliser ma Localisation</button>
     <script type="text/javascript">
     function gps(link){
         if (navigator.geolocation) //tu vérifies la disponibilité de la géo
@@ -35,8 +35,8 @@
                         var longitude = position.coords.longitude; //tu récupère la longitude
                         //tu récupère la valeur de ton lien
                         //tu modifie ton lien
-                        link = link.replace(1,latitude);
-                        link = link.replace(2,longitude);
+                        link = link.replace('latitude',latitude);
+                        link = link.replace('longitude',longitude);
                         //ci dessous, tu demande au navigateur de modifier sa source avec
                         window.location.replace(link);
                     }
